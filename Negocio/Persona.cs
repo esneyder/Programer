@@ -38,5 +38,27 @@ namespace Negocio
 			
 		
 		}
+
+		//método para actulizar un registro en la base de datos
+
+		public int actualzar(Persona per) {
+			DatosSistema datos = new DatosSistema();
+			string[] parametros ={"@operacion",
+									 "@cedula",
+									 "@nombre",
+									 "@apellido",
+								     "@fechaNacimiento",
+									"@edad",
+								 "@ciudad"};
+			return datos.Ejecutar("spPersonaIA", parametros, "A",
+				per.cedula,
+				per.nombre,
+				per.fechaNacimiento,
+				per.edad,
+				per.ciudad);
+
+		
+		
+		}
 	}
 }
