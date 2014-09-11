@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Negocio
 {
-    public class Persona
-    {
+	public class Persona
+	{
 
 		public string cedula { get; set; }
 		public string nombre { get; set; }
@@ -19,7 +19,8 @@ namespace Negocio
 		public string ciudad { get; set; }
 
 		//método para insertar registros en la base de datos
-		public int nuevaPersona(Persona per) {
+		public int nuevaPersona(Persona per)
+		{
 			DatosSistema datos = new DatosSistema();
 			String[] parametros = { "@operacion",
 								  "@cedula",
@@ -36,13 +37,14 @@ namespace Negocio
 							per.fechaNacimiento,
 							per.edad,
 							per.ciudad);
-			
-		
+
+
 		}
 
 		//método para actulizar un registro en la base de datos
 
-		public int actualzar(Persona per) {
+		public int actualzar(Persona per)
+		{
 			DatosSistema datos = new DatosSistema();
 			string[] parametros ={"@operacion",
 									 "@cedula",
@@ -58,42 +60,46 @@ namespace Negocio
 				per.edad,
 				per.ciudad);
 
-		
-		
+
+
 		}
 		//método para eliminar registro
-		public int eliminar(int cedula) {
-			DatosSistema datos= new DatosSistema();
-			String[] parametros = { "@operacion","@cedula"};
-			return datos.Ejecutar("spPersonaSE",parametros,"E",cedula);
-		
+		public int eliminar(int cedula)
+		{
+			DatosSistema datos = new DatosSistema();
+			String[] parametros = { "@operacion", "@cedula" };
+			return datos.Ejecutar("spPersonaSE", parametros, "E", cedula);
+
 		}
 		//método consultar
-		public DataTable mostrarRegistros() {
+		public DataTable mostrarRegistros()
+		{
 			DatosSistema datos = new DatosSistema();
 			DataTable dt = new DataTable();
-			string[] parametros = { "@operacion","@cedula"};
-			return datos.getDatos("spPersonaSE",parametros,"T",0);
+			string[] parametros = { "@operacion", "@cedula" };
+			return datos.getDatos("spPersonaSE", parametros, "T", 0);
 
 		}
 		//método registro expesifico
-		public Persona getRegistros(string ced) {
+		public Persona getRegistros(string ced)
+		{
 			DatosSistema datos = new DatosSistema();
 			DataTable dt = new DataTable();
-			string[] parametros = { "@operacion","cedula"};
-			dt= datos.getDatos("spPersonaSE",parametros,"S",ced);
+			string[] parametros = { "@operacion", "cedula" };
+			dt = datos.getDatos("spPersonaSE", parametros, "S", ced);
 			Persona p = new Persona();
-			foreach(DataRow fila in dt.Rows){
-			p.cedula=fila["cedula"].ToString();
-			p.nombre = fila["nombre"].ToString();
-			p.apellido = fila["apellido"].ToString();
-			p.fechaNacimiento =Convert.ToDateTime( fila["fechaNacimiento"].ToString());
-			p.edad=Convert.ToInt32(fila["edad"].ToString());
-		    p.ciudad=fila["ciudad"].ToString();
+			foreach (DataRow fila in dt.Rows)
+			{
+				p.cedula = fila["cedula"].ToString();
+				p.nombre = fila["nombre"].ToString();
+				p.apellido = fila["apellido"].ToString();
+				p.fechaNacimiento = Convert.ToDateTime(fila["fechaNacimiento"].ToString());
+				p.edad = Convert.ToInt32(fila["edad"].ToString());
+				p.ciudad = fila["ciudad"].ToString();
 
 			}
 			return p;
 		}
-		 
+
 	}
 }

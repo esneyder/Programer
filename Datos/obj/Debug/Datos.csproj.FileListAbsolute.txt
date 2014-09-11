@@ -1,0 +1,5 @@
+c:\users\edwin\documents\visual studio 2013\Projects\Programer\Datos\bin\Debug\Datos.dll
+c:\users\edwin\documents\visual studio 2013\Projects\Programer\Datos\bin\Debug\Datos.pdb
+c:\users\edwin\documents\visual studio 2013\Projects\Programer\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
+c:\users\edwin\documents\visual studio 2013\Projects\Programer\Datos\obj\Debug\Datos.dll
+c:\users\edwin\documents\visual studio 2013\Projects\Programer\Datos\obj\Debug\Datos.pdb

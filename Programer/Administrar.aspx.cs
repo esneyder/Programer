@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,5 +14,17 @@ namespace Programer
         {
 
         }
+
+		protected void Button1_Click(object sender, EventArgs e)
+		{
+			Persona persona = new Persona();
+			persona.cedula = TextBox1.Text;
+			persona.nombre = TextBox2.Text;
+			persona.apellido = TextBox3.Text;
+			persona.fechaNacimiento =Convert.ToDateTime( TextBox4.Text);
+			persona.edad =Convert.ToInt32( TextBox5.Text);
+			persona.ciudad = TextBox6.Text;
+			persona.nuevaPersona(persona);
+		}
     }
 }
