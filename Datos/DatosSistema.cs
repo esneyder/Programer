@@ -39,5 +39,31 @@ namespace Datos
                return dt;
        
        }
+
+       //método para ejecutar en la base de datos (insert-update)
+       public int Ejecutar(string procedimiento, string[] parametros, params object[] valparametros)
+       {
+           Conexion con = new Conexion();
+           SqlCommand cmd = new SqlCommand();
+           cmd.CommandText = procedimiento;
+           cmd.CommandType = CommandType.StoredProcedure;
+           if (procedimiento.Length!=0 && parametros.Length==valparametros.Length)
+           {
+               int i = 0;
+               foreach (string parametro in parametros)
+                   cmd.Parameters.AddWithValue(parametro, valparametros[i++]);
+               try
+               {
+                   return cmd.ExecuteNonQuery();
+               }
+               catch (Exception)
+               {
+                   
+                  
+               }
+           }
+           return 0;
+       
+       }
     }
 }
