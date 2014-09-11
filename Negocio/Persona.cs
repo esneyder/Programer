@@ -60,5 +60,13 @@ namespace Negocio
 		
 		
 		}
+		//método para eliminar registro
+		public int eliminar(int cedula) {
+			DatosSistema datos= new DatosSistema();
+			String[] parametros = { "@operacion","@cedula"};
+			return datos.Ejecutar("spPersonaSE",parametros,"E",cedula);
+		
+		}
+		 
 	}
 }
