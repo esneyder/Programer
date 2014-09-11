@@ -1,6 +1,7 @@
 ﻿using Datos;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,6 +67,14 @@ namespace Negocio
 			String[] parametros = { "@operacion","@cedula"};
 			return datos.Ejecutar("spPersonaSE",parametros,"E",cedula);
 		
+		}
+		//método consultar
+		public DataTable mostrarRegistros() {
+			DatosSistema datos = new DatosSistema();
+			DataTable dt = new DataTable();
+			string[] parametros = { "@operacion","@cedula"};
+			return datos.getDatos("spPersona",parametros,"T",0);
+
 		}
 		 
 	}
