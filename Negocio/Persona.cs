@@ -73,8 +73,25 @@ namespace Negocio
 			DatosSistema datos = new DatosSistema();
 			DataTable dt = new DataTable();
 			string[] parametros = { "@operacion","@cedula"};
-			return datos.getDatos("spPersona",parametros,"T",0);
+			return datos.getDatos("spPersonaSE",parametros,"T",0);
 
+		}
+		//método registro expesifico
+		public DataTable getRegistros(string ced) {
+			DatosSistema datos = new DatosSistema();
+			DataTable dt = new DataTable();
+			string[] parametros = { "@operacion","cedula"};
+			dt= datos.getDatos("spPersonaSE",parametros,"S",ced);
+			Persona p = new Persona();
+			foreach(DataRow fila in dt.Rows){
+			p.cedula=fila["cedula"].ToString();
+			p.nombre = fila["nombre"].ToString();
+			p.apellido = fila["apellido"].ToString();
+			p.fechaNacimiento =Convert.ToDateTime( fila["fechaNacimiento"].ToString());
+			p.edad=Convert.ToInt32(fila["edad"].ToString());
+		    p.ciudad=fila["ciudad"].ToString();
+
+			}
 		}
 		 
 	}
