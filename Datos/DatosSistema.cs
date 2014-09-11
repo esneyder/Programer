@@ -17,6 +17,13 @@ namespace Datos
                cmd.Connection = con.conectar();
                cmd.CommandText = procedimiento;
                cmd.CommandType = CommandType.StoredProcedure;
+               if (procedimiento.Length!=0 && parametros.Length==valparametros.Length)
+               {
+                   int i = 0;
+                   foreach (string parametro in parametros)
+                       cmd.Parameters.AddWithValue(parametro,valparametros[i++]);
+               
+               }
        
        }
     }
