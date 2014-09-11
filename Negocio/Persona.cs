@@ -77,7 +77,7 @@ namespace Negocio
 
 		}
 		//método registro expesifico
-		public DataTable getRegistros(string ced) {
+		public Persona getRegistros(string ced) {
 			DatosSistema datos = new DatosSistema();
 			DataTable dt = new DataTable();
 			string[] parametros = { "@operacion","cedula"};
@@ -92,6 +92,7 @@ namespace Negocio
 		    p.ciudad=fila["ciudad"].ToString();
 
 			}
+			return p;
 		}
 		 
 	}
